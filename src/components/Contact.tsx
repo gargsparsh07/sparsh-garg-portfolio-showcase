@@ -53,13 +53,13 @@ const Contact = () => {
                   <div className="p-3 gradient-primary rounded-lg">
                     <Mail size={20} className="text-white" />
                   </div>
-                  <span className="text-foreground">your.email@example.com</span>
+                  <span className="text-foreground">sparshgarg.pks@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-4 p-4 glass rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300">
                   <div className="p-3 gradient-primary rounded-lg">
                     <Phone size={20} className="text-white" />
                   </div>
-                  <span className="text-foreground">+91-XXXXXXXXXX</span>
+                  <span className="text-foreground">+91-9876543210</span>
                 </div>
                 <div className="flex items-center gap-4 p-4 glass rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300">
                   <div className="p-3 gradient-primary rounded-lg">
