@@ -42,7 +42,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2 glass px-3 py-2 rounded-lg hover:scale-105 hover:bg-primary/5 transition-all duration-300 cursor-pointer group">
               <Mail size={16} className="text-primary group-hover:animate-pulse" />
-              <span className="text-sm group-hover:text-primary transition-colors duration-300">sparshgarg.pks@gmail.com</span>
+              <span className="text-sm group-hover:text-primary transition-colors duration-300">sparshgarg.skp@gmail.com</span>
             </div>
             <div className="flex items-center gap-2 glass px-3 py-2 rounded-lg hover:scale-105 hover:bg-primary/5 transition-all duration-300 cursor-pointer group">
               <Phone size={16} className="text-primary group-hover:animate-pulse" />
