@@ -30,9 +30,9 @@ const Contact = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background"></div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 glass rounded-full">
-            <MessageSquare size={16} className="text-primary" />
-            <span className="text-sm text-muted-foreground">Get In Touch</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 glass rounded-full hover:scale-105 hover:bg-primary/10 transition-all duration-300 cursor-pointer group">
+            <MessageSquare size={16} className="text-primary group-hover:animate-pulse" />
+            <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors duration-300">Get In Touch</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
             Let's Connect
