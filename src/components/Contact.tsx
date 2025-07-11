@@ -1,9 +1,13 @@
+
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Code, Send, MessageSquare } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import emailjs from '@emailjs/browser';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const { toast } = useToast();
   
   const [formData, setFormData] = useState({
     name: '',
@@ -11,13 +15,41 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowSuccess(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setShowSuccess(false), 5000);
+    setIsLoading(true);
+
+    try {
+      await emailjs.send(
+        'service_1gke24m',
+        'template_7pbdg14',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        'dmKjZIwtilfso2eIw'
+      );
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thanks for reaching out, I appreciate your time! You'll hear from me soon 😊",
+      });
+
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -102,12 +134,6 @@ const Contact = () => {
               Let's start a conversation. I'll get back to you as soon as possible.
             </p>
 
-            {showSuccess && (
-              <div className="mb-6 p-4 glass border border-primary/30 rounded-xl">
-                <p className="text-primary font-medium">Thanks for reaching out, I appreciate your time! You'll hear from me soon 😊</p>
-              </div>
-            )}
-
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-foreground font-medium mb-2">Name *</label>
@@ -118,7 +144,8 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="Your name"
-                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground"
+                  disabled={isLoading}
+                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground disabled:opacity-50"
                 />
               </div>
               <div>
@@ -130,7 +157,8 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="your.email@example.com"
-                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground"
+                  disabled={isLoading}
+                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground disabled:opacity-50"
                 />
               </div>
               <div>
@@ -141,7 +169,8 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="What's this about?"
-                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground"
+                  disabled={isLoading}
+                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground disabled:opacity-50"
                 />
               </div>
               <div>
@@ -153,15 +182,17 @@ const Contact = () => {
                   required
                   rows={5}
                   placeholder="Tell me about your project or just say hi..."
-                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none bg-transparent text-foreground placeholder-muted-foreground"
+                  disabled={isLoading}
+                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none bg-transparent text-foreground placeholder-muted-foreground disabled:opacity-50"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full gradient-primary text-white py-4 px-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+                disabled={isLoading}
+                className="w-full gradient-primary text-white py-4 px-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <Send size={18} />
-                Send Message
+                {isLoading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
