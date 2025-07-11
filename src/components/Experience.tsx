@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Briefcase, GraduationCap, Award, Heart, Calendar } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
@@ -10,7 +9,6 @@ const Experience = () => {
   const { ref: extraRef, isVisible: extraVisible } = useScrollAnimation();
 
   const certifications = [
-    "Machine Learning with Python – Campalin Innovations",
     "Programming in Java – NPTEL", 
     "Data Science with Python – Simplilearn",
     "Python Crash Course – Udemy",
