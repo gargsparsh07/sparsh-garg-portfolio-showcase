@@ -24,7 +24,7 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center items-center gap-6 mb-8 text-[#444]">
             <div className="flex items-center gap-2">
               <MapPin size={18} className="text-[#A88BEB]" />
-              <span>West Delhi, Delhi</span>
+              <span>Delhi, India</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail size={18} className="text-[#A88BEB]" />
