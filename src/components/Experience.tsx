@@ -1,11 +1,13 @@
-
 import React from 'react';
 import { Briefcase, GraduationCap, Award, Heart, Calendar } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Experience = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   const certifications = [
     "Machine Learning with Python – Campalin Innovations",
-    "Programming in Java – NPTEL",
+    "Programming in Java – NPTEL", 
     "Data Science with Python – Simplilearn",
     "Python Crash Course – Udemy",
     "DBMS with MySQL – Coursera",
@@ -14,9 +16,11 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 relative">
+    <section ref={ref} id="experience" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background to-primary/5"></div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}>
         {/* Work Experience */}
         <div className="mb-20">
           <div className="text-center mb-16">
@@ -30,7 +34,9 @@ const Experience = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto rounded-full"></div>
           </div>
 
-          <div className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+          <div className={`gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
+          }`} style={{ transitionDelay: '200ms' }}>
             <div className="flex items-start gap-4">
               <div className="p-4 gradient-primary rounded-xl hover:scale-110 transition-transform duration-300">
                 <Briefcase size={24} className="text-white" />
@@ -66,7 +72,9 @@ const Experience = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto rounded-full"></div>
           </div>
 
-          <div className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+          <div className={`gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
+          }`} style={{ transitionDelay: '300ms' }}>
             <div className="flex items-start gap-4">
               <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl hover:scale-110 transition-transform duration-300">
                 <GraduationCap size={24} className="text-white" />
@@ -92,7 +100,9 @@ const Experience = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto rounded-full"></div>
           </div>
 
-          <div className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+          <div className={`gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+          }`} style={{ transitionDelay: '400ms' }}>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 gradient-primary rounded-xl hover:scale-110 transition-transform duration-300">
                 <Award size={24} className="text-white" />
@@ -101,7 +111,9 @@ const Experience = () => {
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               {certifications.map((cert, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 glass rounded-xl border border-border/50 hover:border-primary/30 hover:scale-105 hover:bg-primary/5 transition-all duration-300 cursor-pointer group">
+                <div key={index} className={`flex items-start gap-3 p-4 glass rounded-xl border border-border/50 hover:border-primary/30 hover:scale-105 hover:bg-primary/5 transition-all duration-500 cursor-pointer group ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`} style={{ transitionDelay: `${600 + index * 100}ms` }}>
                   <Award size={16} className="text-primary mt-1 flex-shrink-0 group-hover:animate-pulse" />
                   <span className="text-muted-foreground group-hover:text-primary transition-colors duration-300">{cert}</span>
                 </div>
@@ -120,12 +132,16 @@ const Experience = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 text-center cursor-pointer group">
+            <div className={`gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-700 text-center cursor-pointer group ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
+            }`} style={{ transitionDelay: '500ms' }}>
               <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">🧠</div>
               <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">Chess</h3>
               <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">Regular player, known for strategic thinking and analytical approach</p>
             </div>
-            <div className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 text-center cursor-pointer group">
+            <div className={`gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-[1.05] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-700 text-center cursor-pointer group ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
+            }`} style={{ transitionDelay: '600ms' }}>
               <div className="p-4 bg-gradient-to-r from-pink-500 to-red-500 rounded-full inline-block mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Heart size={24} className="text-white" />
               </div>

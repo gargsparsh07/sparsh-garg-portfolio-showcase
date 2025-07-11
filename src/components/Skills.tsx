@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { Code, Users, Zap } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Skills = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   const technicalSkills = [
     'Python', 'Machine Learning', 'Data Science', 'NLP', 'MySQL', 'Pandas', 
     'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn', 'HTML', 'CSS', 'Java', 
@@ -15,9 +18,11 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 relative">
+    <section ref={ref} id="skills" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background to-primary/5"></div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}>
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 glass rounded-full hover:scale-105 hover:bg-primary/10 transition-all duration-300 cursor-pointer group">
             <Zap size={16} className="text-primary group-hover:animate-pulse" />
@@ -31,7 +36,9 @@ const Skills = () => {
 
         <div className="space-y-8">
           {/* Technical Skills */}
-          <div className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 transition-all duration-300">
+          <div className={`gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
+          }`} style={{ transitionDelay: '200ms' }}>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 gradient-primary rounded-xl">
                 <Code size={24} className="text-white" />
@@ -42,7 +49,10 @@ const Skills = () => {
               {technicalSkills.map((skill, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 glass text-foreground rounded-full border border-primary/20 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 font-medium"
+                  className={`px-4 py-2 glass text-foreground rounded-full border border-primary/20 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 font-medium ${
+                    isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
+                  style={{ transitionDelay: `${400 + index * 50}ms` }}
                 >
                   {skill}
                 </span>
@@ -51,7 +61,9 @@ const Skills = () => {
           </div>
 
           {/* Soft Skills */}
-          <div className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 transition-all duration-300">
+          <div className={`gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
+          }`} style={{ transitionDelay: '300ms' }}>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl">
                 <Users size={24} className="text-white" />
@@ -62,7 +74,10 @@ const Skills = () => {
               {softSkills.map((skill, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 glass text-foreground rounded-full border border-purple-500/20 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300 font-medium"
+                  className={`px-4 py-2 glass text-foreground rounded-full border border-purple-500/20 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300 font-medium ${
+                    isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
+                  style={{ transitionDelay: `${600 + index * 50}ms` }}
                 >
                   {skill}
                 </span>

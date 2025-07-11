@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { ExternalLink, Github, Rocket } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Projects = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   const projects = [
     {
       title: "Product Recommender System",
@@ -19,9 +22,11 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section ref={ref} id="projects" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background"></div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}>
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 glass rounded-full hover:scale-105 hover:bg-primary/10 transition-all duration-300 cursor-pointer group">
             <Rocket size={16} className="text-primary group-hover:animate-pulse" />
@@ -37,7 +42,10 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-105 transition-all duration-300 transform flex flex-col h-full group"
+              className={`gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-105 transition-all duration-700 transform flex flex-col h-full group ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+              style={{ transitionDelay: `${200 + index * 150}ms` }}
             >
               <div className="flex-grow">
                 <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
@@ -50,7 +58,10 @@ const Projects = () => {
                   {project.techStack.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 glass text-primary text-sm rounded-full border border-primary/20 font-medium"
+                      className={`px-3 py-1 glass text-primary text-sm rounded-full border border-primary/20 font-medium transition-all duration-300 ${
+                        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                      }`}
+                      style={{ transitionDelay: `${400 + index * 150 + techIndex * 50}ms` }}
                     >
                       {tech}
                     </span>
