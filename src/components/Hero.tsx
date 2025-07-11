@@ -14,8 +14,8 @@ const Hero = () => {
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="animate-fade-in-up">
-          {/* Hello badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 glass rounded-full hover:scale-105 hover:bg-primary/10 transition-all duration-300 cursor-pointer group">
+          {/* Hello badge with slide-up animation */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 glass rounded-full hover:scale-105 hover:bg-primary/10 transition-all duration-300 cursor-pointer group animate-slide-up-fade">
             <Sparkles size={16} className="text-primary group-hover:animate-pulse" />
             <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors duration-300">Hello, I'm</span>
           </div>
