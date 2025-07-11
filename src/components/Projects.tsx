@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Rocket } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -19,29 +19,38 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-[#F5F8FF]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background"></div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#333B4F] mb-4">Featured Projects</h2>
-          <div className="w-24 h-1 bg-[#A88BEB] mx-auto rounded-full"></div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 glass rounded-full">
+            <Rocket size={16} className="text-primary" />
+            <span className="text-sm text-muted-foreground">My Work</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
+            Featured Projects
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 border border-[#D3CCFF] hover:shadow-xl hover:shadow-[#A88BEB]/10 transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full"
+              className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 hover:scale-105 transition-all duration-300 transform flex flex-col h-full group"
             >
               <div className="flex-grow">
-                <h3 className="text-2xl font-bold text-[#333B4F] mb-4">{project.title}</h3>
-                <p className="text-[#444] mb-3 leading-relaxed">{project.description}</p>
-                <p className="text-[#666] mb-6 leading-relaxed">{project.details}</p>
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground mb-3 leading-relaxed">{project.description}</p>
+                <p className="text-muted-foreground/80 mb-6 leading-relaxed text-sm">{project.details}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.techStack.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-[#F5F8FF] text-[#A88BEB] text-sm rounded-full border border-[#D3CCFF] font-medium"
+                      className="px-3 py-1 glass text-primary text-sm rounded-full border border-primary/20 font-medium"
                     >
                       {tech}
                     </span>
@@ -50,7 +59,7 @@ const Projects = () => {
               </div>
               
               <div className="mt-auto">
-                <button className="w-full bg-[#333B4F] text-white py-3 px-6 rounded-lg font-medium hover:bg-gradient-to-r hover:from-[#a88beb] hover:to-[#f8ceec] transition-all duration-300 flex items-center justify-center gap-2">
+                <button className="w-full gradient-primary text-white py-3 px-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
                   <Github size={18} />
                   View on GitHub
                 </button>

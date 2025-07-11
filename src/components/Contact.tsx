@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Code, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Code, Send, MessageSquare } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,70 +26,85 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-[#F5F8FF] to-[#FFD6A5]/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background"></div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#333B4F] mb-4">Let's Connect</h2>
-          <div className="w-24 h-1 bg-[#A88BEB] mx-auto rounded-full"></div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 glass rounded-full">
+            <MessageSquare size={16} className="text-primary" />
+            <span className="text-sm text-muted-foreground">Get In Touch</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
+            Let's Connect
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-[#333B4F] mb-6">Get in Touch</h3>
+              <h3 className="text-2xl font-bold mb-6">Ready to collaborate?</h3>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                I'm always open to discussing new opportunities, creative projects, or just having a chat about AI and technology.
+              </p>
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-[#D3CCFF]">
-                  <div className="p-2 bg-[#A88BEB] rounded-lg">
+                <div className="flex items-center gap-4 p-4 glass rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300">
+                  <div className="p-3 gradient-primary rounded-lg">
                     <Mail size={20} className="text-white" />
                   </div>
-                  <span className="text-[#444]">your.email@example.com</span>
+                  <span className="text-foreground">your.email@example.com</span>
                 </div>
-                <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-[#D3CCFF]">
-                  <div className="p-2 bg-[#A88BEB] rounded-lg">
+                <div className="flex items-center gap-4 p-4 glass rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300">
+                  <div className="p-3 gradient-primary rounded-lg">
                     <Phone size={20} className="text-white" />
                   </div>
-                  <span className="text-[#444]">+91-XXXXXXXXXX</span>
+                  <span className="text-foreground">+91-XXXXXXXXXX</span>
                 </div>
-                <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-[#D3CCFF]">
-                  <div className="p-2 bg-[#A88BEB] rounded-lg">
+                <div className="flex items-center gap-4 p-4 glass rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300">
+                  <div className="p-3 gradient-primary rounded-lg">
                     <MapPin size={20} className="text-white" />
                   </div>
-                  <span className="text-[#444]">West Delhi, Delhi</span>
+                  <span className="text-foreground">Delhi, India</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <h4 className="text-xl font-bold text-[#333B4F] mb-4">Social Links</h4>
+              <h4 className="text-xl font-bold mb-4">Follow me</h4>
               <div className="flex gap-4">
-                <button className="p-3 bg-white rounded-lg border border-[#D3CCFF] hover:bg-[#A88BEB] hover:text-white transition-all duration-300 group">
-                  <Github size={20} className="text-[#444] group-hover:text-white" />
-                </button>
-                <button className="p-3 bg-white rounded-lg border border-[#D3CCFF] hover:bg-[#A88BEB] hover:text-white transition-all duration-300 group">
-                  <Linkedin size={20} className="text-[#444] group-hover:text-white" />
-                </button>
-                <button className="p-3 bg-white rounded-lg border border-[#D3CCFF] hover:bg-[#A88BEB] hover:text-white transition-all duration-300 group">
-                  <Code size={20} className="text-[#444] group-hover:text-white" />
-                </button>
+                {[
+                  { icon: Github, name: 'GitHub' },
+                  { icon: Linkedin, name: 'LinkedIn' },
+                  { icon: Code, name: 'Portfolio' }
+                ].map((social, index) => (
+                  <button 
+                    key={index}
+                    className="p-3 glass rounded-xl border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
+                  >
+                    <social.icon size={20} className="text-muted-foreground group-hover:text-primary" />
+                  </button>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 border border-[#D3CCFF] relative">
-            <h3 className="text-2xl font-bold text-[#333B4F] mb-2">Send Message</h3>
-            <p className="text-[#444] mb-6">I'd love to hear from you. Send me a message and I'll respond as soon as possible.</p>
+          <div className="gradient-card rounded-2xl p-8 border border-border/50 hover:border-primary/30 transition-all duration-300">
+            <h3 className="text-2xl font-bold mb-2">Send Message</h3>
+            <p className="text-muted-foreground mb-6">
+              Let's start a conversation. I'll get back to you as soon as possible.
+            </p>
 
             {showSuccess && (
-              <div className="mb-6 p-4 bg-[#F5F8FF] border border-[#A88BEB] rounded-lg">
-                <p className="text-[#A88BEB] font-medium">Thanks for reaching out, I appreciate your time! You'll hear from me soon 😊</p>
+              <div className="mb-6 p-4 glass border border-primary/30 rounded-xl">
+                <p className="text-primary font-medium">Thanks for reaching out, I appreciate your time! You'll hear from me soon 😊</p>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-[#333B4F] font-medium mb-2">Name *</label>
+                <label className="block text-foreground font-medium mb-2">Name *</label>
                 <input
                   type="text"
                   name="name"
@@ -97,11 +112,11 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="Your name"
-                  className="w-full px-4 py-3 border border-[#D3CCFF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A88BEB] focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground"
                 />
               </div>
               <div>
-                <label className="block text-[#333B4F] font-medium mb-2">Email *</label>
+                <label className="block text-foreground font-medium mb-2">Email *</label>
                 <input
                   type="email"
                   name="email"
@@ -109,35 +124,35 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="your.email@example.com"
-                  className="w-full px-4 py-3 border border-[#D3CCFF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A88BEB] focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground"
                 />
               </div>
               <div>
-                <label className="block text-[#333B4F] font-medium mb-2">Subject</label>
+                <label className="block text-foreground font-medium mb-2">Subject</label>
                 <input
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Subject (optional)"
-                  className="w-full px-4 py-3 border border-[#D3CCFF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A88BEB] focus:border-transparent transition-all duration-300"
+                  placeholder="What's this about?"
+                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-transparent text-foreground placeholder-muted-foreground"
                 />
               </div>
               <div>
-                <label className="block text-[#333B4F] font-medium mb-2">Message *</label>
+                <label className="block text-foreground font-medium mb-2">Message *</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={5}
-                  placeholder="Your message..."
-                  className="w-full px-4 py-3 border border-[#D3CCFF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A88BEB] focus:border-transparent transition-all duration-300 resize-none"
+                  placeholder="Tell me about your project or just say hi..."
+                  className="w-full px-4 py-3 glass border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none bg-transparent text-foreground placeholder-muted-foreground"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#333B4F] text-white py-4 px-6 rounded-lg font-medium hover:bg-gradient-to-r hover:from-[#a88beb] hover:to-[#f8ceec] transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105"
+                className="w-full gradient-primary text-white py-4 px-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
               >
                 <Send size={18} />
                 Send Message
