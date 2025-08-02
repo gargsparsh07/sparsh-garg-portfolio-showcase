@@ -88,8 +88,8 @@ const Contact = () => {
               </p>
               <div className="space-y-4">
                 {[
-                  { icon: Mail, text: "sparshgarg.skp@gmail.com" },
-                  { icon: Phone, text: "+91-9876543210" },
+                  { icon: Mail, text: "sparshgarg.pks@gmail.com" },
+                  { icon: Phone, text: "+91-8527872697" },
                   { icon: MapPin, text: "Delhi, India" }
                 ].map((item, index) => (
                   <div key={index} className={`flex items-center gap-4 p-4 glass rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-500 ${
