@@ -110,16 +110,19 @@ const Contact = () => {
               <h4 className="text-xl font-bold mb-4">Follow me</h4>
               <div className="flex gap-4">
                 {[
-                  { icon: Github, name: 'GitHub' },
-                  { icon: Linkedin, name: 'LinkedIn' },
-                  { icon: Code, name: 'Portfolio' }
+                  { icon: Github, name: 'GitHub', link: 'https://github.com/gargsparsh07' },
+                  { icon: Linkedin, name: 'LinkedIn', link: 'https://www.linkedin.com/in/sparsh-garg-2b3322280/' },
+                  { icon: Code, name: 'Portfolio', link: '#' }
                 ].map((social, index) => (
-                  <button 
+                  <a 
                     key={index}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 glass rounded-xl border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
                   >
                     <social.icon size={20} className="text-muted-foreground group-hover:text-primary" />
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>

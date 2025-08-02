@@ -70,10 +70,15 @@ const Projects = () => {
               </div>
               
               <div className="mt-auto">
-                <button className="w-full gradient-primary text-white py-3 px-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+                <a 
+                  href="https://github.com/gargsparsh07"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full gradient-primary text-white py-3 px-6 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+                >
                   <Github size={18} />
                   View on GitHub
-                </button>
+                </a>
               </div>
             </div>
           ))}
