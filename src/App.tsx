@@ -6,6 +6,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
+// Declare the custom element for TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'elevenlabs-convai': {
+        'agent-id': string;
+      };
+    }
+  }
+}
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -20,6 +31,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      <elevenlabs-convai agent-id="agent_0901k2hyzfsnfpk8vak467zd0kbz"></elevenlabs-convai>
     </TooltipProvider>
   </QueryClientProvider>
 );
